@@ -1,0 +1,15 @@
+# Data files are large and come from Kaggle: never upload them
+data/
+*.csv
+
+# Notebook and Python clutter
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+
+# Secrets (API keys used later in the project)
+.env
+
+# System files
+.DS_Store
+Thumbs.db
