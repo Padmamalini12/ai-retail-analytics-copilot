@@ -23,15 +23,15 @@ The data is real and messy: structural and genuine missing values, impossible da
 
 **1. Late deliveries are the biggest driver of bad reviews.** Late orders get a 1–2 star review 63% of the time vs 9% for on-time orders, and the score falls the later an order arrives.
 
-![Average review score by delivery timing](images/review_score_by_delivery_timing.png)
+![Average review score by delivery timing](review_score_by_delivery_timing.png)
 
 **2. Month by month, bad reviews track late deliveries (correlation 0.94).** The two spikes are the Black Friday 2017 surge and a Feb–Mar 2018 crisis, when nearly 1 in 5 orders arrived late.
 
-![Late deliveries vs bad reviews by month](images/late_vs_bad_reviews_by_month.png)
+![Late deliveries vs bad reviews by month](late_vs_bad_reviews_by_month.png)
 
 **3. Distance drives delays.** 60% of sellers are in São Paulo; orders shipped over 2,000 km take 18 days vs 5 days under 100 km, and are late almost three times as often.
 
-![Late deliveries and bad reviews by distance](images/late_and_bad_reviews_by_distance.png)
+![Late deliveries and bad reviews by distance](late_and_bad_reviews_by_distance.png)
 
 **4. Orders split across several sellers get bad reviews 47% of the time**, even when they arrive on time.
 
@@ -39,7 +39,7 @@ The data is real and messy: structural and genuine missing values, impossible da
 
 **6. Only 2.15% of customers ever come back**, and a bad first experience is not the main reason.
 
-![Cohort retention](images/cohort_retention_heatmap.png)
+![Cohort retention](cohort_retention_heatmap.png)
 
 **Recommendations:** ship multi-seller orders together (or warn customers), add sellers or warehouses outside São Paulo, set realistic promises for far-away states, investigate last-mile delivery in Rio de Janeiro, and add carrier capacity before peak periods.
 
@@ -47,8 +47,8 @@ The data is real and messy: structural and genuine missing values, impossible da
 
 | Notebook | What it covers |
 | --- | --- |
-| [01 · Data cleaning and EDA](notebooks/01_data_cleaning_and_eda.ipynb) | Missing and impossible values, outliers, the reliable time window, drivers of bad reviews, payments, geography; builds the clean master table |
-| [02 · Customer retention and features](notebooks/02_customer_retention_and_features.ipynb) | Repeat customers, cohort retention, the churn target, log transforms |
+| [01 · Data cleaning and EDA](01_data_cleaning_and_eda.ipynb) | Missing and impossible values, outliers, the reliable time window, drivers of bad reviews, payments, geography; builds the clean master table |
+| [02 · Customer retention and features](02_customer_retention_and_features.ipynb) | Repeat customers, cohort retention, the churn target, log transforms |
 
 ## Roadmap
 
@@ -65,18 +65,20 @@ The data is real and messy: structural and genuine missing values, impossible da
 ## Repository structure
 
 ```
-├── data/          # raw and processed data (not stored in Git; see below)
-├── images/        # charts used in this README
-├── notebooks/     # analysis notebooks, in order
+├── 01_data_cleaning_and_eda.ipynb            # notebook 1: cleaning, EDA, master table
+├── 02_customer_retention_and_features.ipynb  # notebook 2: retention, churn target, transforms
+├── *.png                                     # charts used in this README
 ├── requirements.txt
 └── README.md
 ```
 
+The raw data is not stored in this repository (see below).
+
 ## How to run
 
-1. Download the dataset from [Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) and place the 9 CSV files in `data/` (or in a Google Drive folder `MyDrive/Olist/` when using Colab).
+1. Download the dataset from [Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce). In Google Colab, put the 9 CSV files in the Drive folder `MyDrive/Olist/`. To run locally, put them in a `data/` folder one level above this repository (the notebooks read `../data/`).
 2. Install the requirements: `pip install -r requirements.txt`
-3. Run the notebooks in order. Notebook 01 creates `data/master_orders.csv`, which notebook 02 uses.
+3. Run the notebooks in order. Notebook 01 creates `master_orders.csv` in the same data folder, which notebook 02 uses.
 
 ## Tools
 
